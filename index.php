@@ -56,7 +56,7 @@
 
 <div class="root">
 <h1>User Data Entry</h1>
-    <form action="<?$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+    <form action="<?echo "Database.class.php"?>" method="post" enctype="multipart/form-data">
         <div class="container">
             Name : <input type="text" id="username" name="username">
             <br>
