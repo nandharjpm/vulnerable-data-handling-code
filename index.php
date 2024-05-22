@@ -79,20 +79,20 @@
                 if(file_exists('C:/xampp/htdocs/php/datafolder/'.$_FILES['file']['name'])){
                     echo "File Already Exists";
                 }else{
-                    move_uploaded_file($filetmp,'C:/xampp/htdocs/php/datafolder/'.$_FILES['file']['name']);
+                    move_uploaded_file($filetmp,'C:/xampp/htdocs/proj/vulnerablecode/datafolder/'.$_FILES['file']['name']);
                     ?>
                     <center>
                     <div class="container" id="datas">
                         <center>x
                             <?
                             echo "<br>";
-                            echo "User Name : ".$_REQUEST['username'];
+                            echo "User Name : ".strip_tags($_REQUEST['username']);
                             echo "<br>";
                             echo "<br>";
-                            echo "User ID : ".$_REQUEST['userid'];
+                            echo "User ID : ".strip_tags($_REQUEST['userid']);
                             echo "<br>";
                             echo "<br>";
-                            echo "Profession : ".$_REQUEST['profession'];
+                            echo "Profession : ".strip_tags($_REQUEST['profession']);
                             echo "<br>";
                             echo "<br>";
                             echo "File Name : ".$filename;
