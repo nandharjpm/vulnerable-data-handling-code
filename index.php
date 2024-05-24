@@ -1,62 +1,13 @@
 <html>
-<style>
-    *{
-        margin: 0px;
-        padding: 0px;
-        color: white;
-        font-family: 'Times New Roman', Times, serif;
-    }
-    h1,h3{
-        display: flex;
-        justify-content: center;
-        background-color: #331D2C;
-        padding: 1rem;
-    }
-    .container{
-        border: 1px solid black;
-        width:fit-content;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 10px;
-    }
-    input{
-        padding: 4px;
-        border-radius: 10px;
-        color: black;
-        font-weight: normal;
-        font-family: 'Times New Roman', Times, serif;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 30px;
-        padding-bottom: 30px;
-    }
-    .root{
-        background-color: #3F2E3E;
-    }
-    #file{
-        color: white;
-    }
-    #sub{
-        background-color: #4F4557;
-        color: white;
-    }
-    .space{
-        background-color: #6D5D6E;
-    }
-    #datas{
-        display: flex;
-        text-align: center;
-        padding: 10px;
-    }
-</style>
+
+<head>
+    <title>vulnproj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <div class="root">
-<h1>User Data Entry</h1>
-    <form action="<?echo "Database.class.php"?>" method="post" enctype="multipart/form-data">
+    <h1>User Data Entry</h1>
+    <form action="<? echo "Database.class.php" ?>" method="post" enctype="multipart/form-data">
         <div class="container">
             Name : <input type="text" id="username" name="username">
             <br>
@@ -71,43 +22,44 @@
     </form>
     <div class="space" style="color: black; background-color:#6D5D6E">
         <h3>User Entered Data</h3>
-            <?
-            if(isset($_POST['submit'])){
-                $filename = $_FILES['file']['name'];
-                $filetype = $_FILES['file']['type'];
-                $filetmp = $_FILES['file']['tmp_name'];
-                if(file_exists('C:/xampp/htdocs/php/datafolder/'.$_FILES['file']['name'])){
-                    echo "File Already Exists";
-                }else{
-                    move_uploaded_file($filetmp,'C:/xampp/htdocs/proj/vulnerablecode/datafolder/'.$_FILES['file']['name']);
-                    ?>
-                    <center>
+        <?
+        if (isset($_POST['submit'])) {
+            $filename = $_FILES['file']['name'];
+            $filetype = $_FILES['file']['type'];
+            $filetmp = $_FILES['file']['tmp_name'];
+            if (file_exists('C:/xampp/htdocs/php/datafolder/' . $_FILES['file']['name'])) {
+                echo "File Already Exists";
+            } else {
+                move_uploaded_file($filetmp, 'C:/xampp/htdocs/proj/vulnerablecode/datafolder/' . $_FILES['file']['name']);
+        ?>
+                <center>
                     <div class="container" id="datas">
                         <center>
                             <?
                             $pattern = "/[()']/i";
                             echo "<br>";
-                            echo "User Name : ".preg_replace($pattern,"",strip_tags($_REQUEST['username']));
+                            echo "User Name : " . preg_replace($pattern, "", strip_tags($_REQUEST['username']));
                             echo "<br>";
                             echo "<br>";
-                            echo "User ID : ".preg_replace($pattern,"",strip_tags($_REQUEST['userid']));
+                            echo "User ID : " . preg_replace($pattern, "", strip_tags($_REQUEST['userid']));
                             echo "<br>";
                             echo "<br>";
-                            echo "Profession : ".preg_replace($pattern,"",strip_tags($_REQUEST['profession']));
+                            echo "Profession : " . preg_replace($pattern, "", strip_tags($_REQUEST['profession']));
                             echo "<br>";
                             echo "<br>";
-                            echo "File Name : ".$filename;
+                            echo "File Name : " . $filename;
                             echo "<br>";
                             echo "<br>";
-                            echo "File Type : ".$filetype;?>
+                            echo "File Type : " . $filetype; ?>
                             echo "<br>";
                         </center>
                     </div>
-                    </center>
-                    <?
-                }
+                </center>
+        <?
             }
-            ?>
-        </div>
+        }
+        ?>
+    </div>
 </div>
+
 </html>
