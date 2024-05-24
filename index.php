@@ -83,16 +83,17 @@
                     ?>
                     <center>
                     <div class="container" id="datas">
-                        <center>x
+                        <center>
                             <?
+                            $pattern = "/[()']/i";
                             echo "<br>";
-                            echo "User Name : ".strip_tags($_REQUEST['username']);
-                            echo "<br>";
-                            echo "<br>";
-                            echo "User ID : ".strip_tags($_REQUEST['userid']);
+                            echo "User Name : ".preg_replace($pattern,"",strip_tags($_REQUEST['username']));
                             echo "<br>";
                             echo "<br>";
-                            echo "Profession : ".strip_tags($_REQUEST['profession']);
+                            echo "User ID : ".preg_replace($pattern,"",strip_tags($_REQUEST['userid']));
+                            echo "<br>";
+                            echo "<br>";
+                            echo "Profession : ".preg_replace($pattern,"",strip_tags($_REQUEST['profession']));
                             echo "<br>";
                             echo "<br>";
                             echo "File Name : ".$filename;
