@@ -9,10 +9,12 @@ class Database
     {
         if (Database::$conn == null) {
             if (isset($_POST['username']) && isset($_POST['userid']) && isset($_POST['profession'])) {
-                $servername = "127.0.0.1";
-                $usernames = "root";
-                $password = "";
-                $databasename = "userdata";
+                $configfile = $_SERVER['DOCUMENT_ROOT'].'/../jsonconfig.json';
+                $config = json_decode(file_get_contents($configfile),true);
+                $servername = $config['db_server_name'];
+                $usernames = $config['db_user_name'];
+                $password = $config['db_password'];
+                $databasename = $config['db_name'];
 
                 $connection = new mysqli($servername, $usernames, $password, $databasename);
 
